@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package myservice;
+
+// Request & Response
+message RequestMessage {
+    string status = 1;
+}
+
+message ResponseMessage {
+    string message = 1;
+}
+
+// Service
+service MyService {
+    rpc Check(RequestMessage) returns (ResponseMessage);
+}
