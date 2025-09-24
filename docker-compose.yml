@@ -1,0 +1,12 @@
+services:
+  server1:
+    build: ./server
+    container_name: server1
+    ports:
+      - "5000:5000"
+
+  server2:
+    build: ./server
+    container_name: server2
+    ports:
+      - "5001:5000"
