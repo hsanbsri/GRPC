@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proxmox;
+
+service ProxmoxManager {
+  rpc StartVM (VMRequest) returns (ActionResponse);
+  rpc StopVM (VMRequest) returns (ActionResponse);
+  rpc GetStatus (VMRequest) returns (StatusResponse);
+}
+
+message VMRequest {
+  int32 vmid = 200; // VM ID di Proxmox
+}
+
+message ActionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message StatusResponse {
+  bool success = 1;
+  string status = 2; // running / stopped / error
+}
+

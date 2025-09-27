@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  // Proses request user, balas dengan status dan waktu pemrosesan (ms)
+  rpc Process(UserRequest) returns (UserResponse) {}
+}
+
+message UserRequest {
+  string name = 1;
+  string address = 2;
+  string gender = 3;
+  int32 age = 4;
+}
+
+message UserResponse {
+  bool ok = 1;
+  string message = 2;
+  int64 processing_ms = 3;
+}
+

@@ -15,8 +15,20 @@ def heavy_computation():
     return total
 
 def cpu_worker():
-    while True:
-        heavy_computation()
+    """
+    Jalankan CPU-heavy task selama 7 menit, berhenti 7 menit, ulangi 3 siklus
+    """
+    cycles = 3
+    for cycle in range(1, cycles+1):
+        print(f"Cycle {cycle}: Start heavy computation")
+        start_time = time.time()
+        # Loop heavy computation selama 7 menit
+        while time.time() - start_time < 7*60:
+            heavy_computation()
+        print(f"Cycle {cycle}: Heavy computation done, cooling 7 minutes")
+        # Berhenti 7 menit
+        time.sleep(7*60)
+    print("All 3 cycles completed")
 
 # Jalankan 1 process per core
 num_cores = multiprocessing.cpu_count()
